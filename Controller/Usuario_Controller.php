@@ -6,13 +6,13 @@ include '../View/Register_View.php';
 include '../Model/Usuarios_Model.php';
 include '../View/Message_View.php';
 
-// if(!isset($_SESSION['login']){
-//     session_start();
-// }
+
 
 session_start();
 
-
+if(IsAuthenticated()){
+    header('Location:../index.php');
+}
 
 
 if(!isset($_GET['action'])){
@@ -34,11 +34,11 @@ case 'register':
 
         if($respuesta == 'true'){
             $respuesta = $usuario->register();
-            if($respuesta == 'Registradro'){
-                var_dump("hola");
+            if($respuesta == 'Registrado'){
+                new Message($respuesta, './Usuario_Controller.php');
             }
             else{
-                var_dump($respuesta);
+                new Message($respuesta, './Usuario_Controller.php');
             }
         }else{
             new Message($respuesta, './Usuario_Controller.php');
@@ -53,14 +53,14 @@ default: //login
     if(!$_POST){
         new Login();
     } else {
-        
+
         $usuario = new Usuarios_Model('','',$_POST['login'],$_POST['password'],'','','','','','',0);
         
         $respuesta = $usuario->login();
         
         if($respuesta == 'true'){
             $_SESSION['login'] = $_POST['login'];
-            //header('Location:../index.php');
+            header('Location:../index.php');
         }else{
             new Message($respuesta, './Usuario_Controller.php');
         }

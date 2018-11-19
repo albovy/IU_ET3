@@ -15,7 +15,7 @@
     }
     //si ha pasado por el login de forma correcta 
     else{
-        header('Location:./Controller/Index_Controller.php');
+        header('Location:./Controller/Loteria_Controller.php');
     }
     
     

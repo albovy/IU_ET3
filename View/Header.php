@@ -45,7 +45,7 @@
             <h1 id="encabezado"><?php echo $strings['Loteria']; ?></h1>
             <?php if(isset($_SESSION['login'])){
                 ?>
-                <button><i class="material-icons">power_settings_new</i></button>
+                <button role="link" onclick="window.location='../Functions/Desconectar.php'"><i class="material-icons">power_settings_new</i></button>
                 <a href="" class="enlaceHead"><i class="material-icons enlaceIconUser">person</i><?php echo $_SESSION['login']; ?></a>
             <?php
             }
@@ -53,7 +53,7 @@
 			
 			<div class="dropdown">
 				<button class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="idioma">
-					<i class="material-icons">language</i><?= $strings['Idioma']; ?>
+					<i class="material-icons">language</i>
 				</button>
 				<div class="dropdown-menu" aria-labelledby="idioma">
 					<a href="../Functions/CambioIdioma.php?idioma=SPANISH" class="dropdown-item"><?= $strings['Español'] ?></a>
@@ -67,7 +67,7 @@
 
 			<nav>
 				<ul class="menu">
-					<li><a href="../Controller/Usuario_Controller.php"><?php echo $strings['Inicio'] ?> </a></li>
+					<li><a href="../index.php"><?php echo $strings['Inicio'] ?> </a></li>
 					<li><a href="#"><?php echo $strings['Sobre nosotros'] ?></a></li>
 					<li><a href="#"><?php echo $strings['Blog'] ?></a></li>
 					<li><a href="#"><?= $strings['Contacto'] ?></a></li>

@@ -22,7 +22,38 @@ array(
 	'Nombre' => 'Name',
 	'Apellidos' => 'Last name',
 	'Titulación' => 'Certification',
-    'Curso académico' => 'Academic course'
+	'Curso académico' => 'Academic course',
+	'El login no existe' => 'Login doesn´t exists',
+	'Tu usuario' => 'Your user',
+	'Tu contraseña' => 'Your password',
+	'Login, email o dni ya existen' => 'Login, email or dni already exists',
+	'Error de inserción' => 'Error inserting',
+	'Registrado' => 'Registered',
+	'Creado por' => 'Created by',
+	'Realizado el' => 'Done on',
+	'Cantidad de participación' => 'Amount of participation',
+	'Ingresado' => 'Deposited',
+	'Premio' => 'Reward',
+	'Pagado' => 'Paid',
+	'SI' => 'YES',
+	'NO' => 'NO',
+	'Algunos datos vacios' => 'Some inputs are empty',
+	'Resguardo' => 'Ticket',
+	'Insertado' => 'Inserted',
+	'Error insertando' => 'Error inserting',
+	'Ya existe una participación con ese email' => 'Participation already exists with that email',
+	'No hay participaciones' => 'There are no participations',
+	'Error editando' => 'Error editing',
+	'Editado' => 'Edited',
+	'Datos seleccionados' => 'Selected date',
+	'Error borrando' => 'Error deleting',
+	'Borrado' => 'Deleted',
+	'Borrar' => 'Delete',
+	'¿Seguro que quiere borrar los datos?' => 'Are you sure you want to delete the data?',
+	'Buscar' => 'Search',
+	'Resultados' => 'Results'
+
+
 
 
  )

@@ -2,7 +2,7 @@
     
     //Clase: Usuario
     
-    class Usuarios_model{
+    class Usuarios_Model{
         
         var $login;
         var $password;
@@ -18,7 +18,7 @@
         var $mysqli;
         
         
-        function __construct($dni, $telefono, $login, $password, $fechaNac, $grupoPractico, $email, $nombre, $apellidos, $titulacion, $curso ){
+        function __construct($dni=null, $telefono=null, $login=null, $password=null, $fechaNac=null, $grupoPractico=null, $email=null, $nombre=null, $apellidos=null, $titulacion=null, $curso=null){
             $this->login = $login;
             $this->dni = $dni;
             $this->telefono = $telefono;
@@ -44,6 +44,10 @@
                     WHERE (
                         (login = '$this->login') 
                     )";
+
+            if(!isset($this->login)){
+                return 'login vacio';
+            }
         
             $resultado = $this->mysqli->query($sql);
             if ($resultado->num_rows == 0){
@@ -63,13 +67,21 @@
         }//fin metodo login
 
         function checkIsValidForRegister(){
+            
+
+            if(!isset($this->login) || !isset($this->email) || !isset($this->dni)){
+                return 'Algunos datos vacios';
+            }
+
             $sql = "SELECT *
                     FROM USUARIOS
-                    WHERE login = '$this->login' OR dni = '$this->dni'";
+                    WHERE login = '$this->login' OR dni = '$this->dni' OR email = '$this->email'";
             $resultado = $this->mysqli->query($sql);
 
+            
+
             if($resultado->num_rows == 1){
-                return 'Login en uso';
+                return 'Login, email o dni ya existen';
             }else{
                 return 'true';
             }
@@ -77,22 +89,26 @@
             
         }
         function register(){
-            $fech = $this->fechaNac;
-            $fech = str_replace("/","-",$fech);
+            $fech = date('Y-m-d',strtotime(str_replace('/','-',$this->fechaNac)));
             
-            var_dump($fech);
+
+
             
             $sql = "INSERT INTO USUARIOS VALUES('$this->dni','$this->telefono','$this->login','$this->password','$fech'
             ,'$this->grupoPractico','$this->email','$this->nombre','$this->apellidos','$this->titulacion','$this->curso')";
 
-            var_dump($sql);
+           
 
             if(!$this->mysqli->query($sql)){
-                return 'Error de inserccion';
+                return 'Error de inserción';
             }else{
                 return 'Registrado';
             }
         }
+
+
+        
+        
     }
     
     

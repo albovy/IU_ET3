@@ -121,6 +121,8 @@ function comprobarDni(campo, size) { //Comprobamos si el campo es un dni
 			letra = letra.substring(modulo, modulo + 1);
 			valor = valor + letra;
 
+			document.getElementById(campo).value = valor;
+
 		}
 		else { // Comprobamos que la letra coincide
 			numero = valor.substr(0, valor.length - 1);
@@ -183,5 +185,12 @@ function editar(){ //Confirmamos nuevamente si todo esta OK
 	return false;
 }
 
+function addLot(){
+	if(comprobarEmail("emailAdd",50) && comprobarAlfabetico("nombreAdd",25) && comprobarAlfabetico("apellidosAdd",50) && comprobarEntero("participacionAdd",0,999) && comprobarAlfabetico("resguardoAdd",50) && comprobarEntero("premioAdd",0,999999)){
+		return true;
+	}
+	alert('Error insertando');
+	return false;
+}
 
 
