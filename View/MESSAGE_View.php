@@ -22,8 +22,7 @@ class MESSAGE{
 		<p>
 		<H3>
 <?php		
-		echo $strings[$this->string];
-?>
+	echo $strings[$this->string];?>
 		</H3>
 		</p>
 		<br>

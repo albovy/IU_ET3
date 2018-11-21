@@ -186,7 +186,7 @@ function editar(){ //Confirmamos nuevamente si todo esta OK
 }
 
 function addLot(){
-	if(comprobarEmail("emailAdd",50) && comprobarAlfabetico("nombreAdd",25) && comprobarAlfabetico("apellidosAdd",50) && comprobarEntero("participacionAdd",0,999) && comprobarAlfabetico("resguardoAdd",50) && comprobarEntero("premioAdd",0,999999)){
+	if(comprobarEmail("emailAdd",50) && comprobarAlfabetico("nombreAdd",25) && comprobarAlfabetico("apellidosAdd",50) && comprobarEntero("participacionAdd",0,999) && comprobarEntero("premioAdd",0,999999)){
 		return true;
 	}
 	alert('Error insertando');

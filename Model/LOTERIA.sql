@@ -17,19 +17,18 @@ GRANT USAGE ON *.* TO `iu2018`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOU
 GRANT ALL PRIVILEGES ON `IU2018`.* TO `iu2018`@`localhost` WITH GRANT OPTION;
 
 
-CREATE TABLE IF NOT EXISTS `USUARIOS` (
 
-`DNI` varchar(9) NOT NULL,
-`telefono` varchar(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `USUARIOS` (
 `login` varchar(15) NOT NULL,
 `password` varchar(128) NOT NULL,
-`FechaNacimiento` date NOT NULL,
-`GrupoPrácticas` varchar(10) NOT NULL,
-`email` varchar(60) NOT NULL,
+`DNI` varchar(9) NOT NULL,
 `nombre` varchar(30) NOT NULL,
 `apellidos` varchar(50) NOT NULL,
-`titulacion` varchar(60) NOT NULL,
-`CursoAcademico` varchar(5) NOT NULL,
+`telefono` varchar(11) NOT NULL,
+`email` varchar(60) NOT NULL,
+`FechaNacimiento` date NOT NULL,
+`fotopersonal` varchar(50) NOT NULL,
+`sexo` enum('hombre','mujer') NOT NULL,
 PRIMARY KEY (`login`),
 UNIQUE KEY `DNI` (`DNI`),
 UNIQUE KEY `email` (`email`)
@@ -49,7 +48,4 @@ UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci COMMENT='Tabla de participaciones en la loteria de la gente de IU';
 
 
-INSERT INTO  USUARIOS VALUES('45142934Y','680913308','albovy','albovy','16-04-1997','1','albovy@hotmail.com','Alex','Borrajo','Esei','2');
 
-INSERT INTO LOTERIAIU VALUES('albovy@hotmail.com','albovy','Borrajo',20,'fdsfdsfd','SI',200,'SI');
-INSERT INTO LOTERIAIU VALUES('albovy2@hotmail.com','albovy','Borrajo',20,'fdsfdsfd','SI',200,'SI');

@@ -12,13 +12,13 @@
         var $dni;
         var $telefono;
         var $fechaNac;
-        var $titulacion;
-        var $grupoPractico;
-        var $curso;
+        var $foto;
+        var $sexo;
+        
         var $mysqli;
         
         
-        function __construct($dni=null, $telefono=null, $login=null, $password=null, $fechaNac=null, $grupoPractico=null, $email=null, $nombre=null, $apellidos=null, $titulacion=null, $curso=null){
+        function __construct($dni=null, $telefono=null, $login=null, $password=null, $fechaNac=null, $foto=null, $email=null, $nombre=null, $apellidos=null, $sexo=null){
             $this->login = $login;
             $this->dni = $dni;
             $this->telefono = $telefono;
@@ -27,9 +27,8 @@
 	        $this->nombre = $nombre;
 	        $this->apellidos = $apellidos;
             $this->email = $email;
-            $this->titulacion = $titulacion;
-            $this->grupoPractico = $grupoPractico;
-            $this->curso = $curso;
+            $this->foto = $foto;
+            $this->sexo = $sexo;
 
             include_once '../Model/Access_DB.php';
 	        $this->mysqli = ConnectDB();
@@ -89,21 +88,30 @@
             
         }
         function register(){
-            $fech = date('Y-m-d',strtotime(str_replace('/','-',$this->fechaNac)));
-            
-
-
-            
-            $sql = "INSERT INTO USUARIOS VALUES('$this->dni','$this->telefono','$this->login','$this->password','$fech'
-            ,'$this->grupoPractico','$this->email','$this->nombre','$this->apellidos','$this->titulacion','$this->curso')";
-
+            $foto = $this->photoDir();
            
+            $sql = "INSERT INTO USUARIOS VALUES('$this->login','$this->password','$this->dni','$this->nombre','$this->apellidos'
+            ,'$this->telefono','$this->email','$this->fechaNac','$foto','$this->sexo')";
+
 
             if(!$this->mysqli->query($sql)){
                 return 'Error de inserción';
             }else{
                 return 'Registrado';
             }
+        }
+
+        function photoDir(){
+            $foto = '../Files/'. $this->email . '/Photo/' . $this->foto['name'];
+            $dirUsuario = '../Files/'. $this->email .'/Photo/';
+
+            if(!file_exists($dirUsuario)){
+                mkdir($dirUsuario,0777,true);
+            }
+            move_uploaded_file($this->foto['tmp_name'], $foto);
+
+            return $foto;
+            
         }
 
 

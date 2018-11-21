@@ -28,7 +28,10 @@ case 'register':
     if(!$_POST){
         new Register();
     }else{
-        $usuario = new Usuarios_Model($_POST['dni'],$_POST['telefono'],$_POST['login'],$_POST['password'],$_POST['fechaNac'],$_POST['grupoPractico'],$_POST['email'],$_POST['nombre'],$_POST['apellidos'],$_POST['titulacion'],$_POST['curso']);
+
+
+
+        $usuario = new Usuarios_Model($_POST['dni'],$_POST['telefono'],$_POST['login'],$_POST['password'],$_POST['fechaNac'],$_FILES['foto'],$_POST['email'],$_POST['nombre'],$_POST['apellidos'],$_POST['sexo']);
        
         $respuesta = $usuario->checkIsValidForRegister();
 
@@ -54,7 +57,7 @@ default: //login
         new Login();
     } else {
 
-        $usuario = new Usuarios_Model('','',$_POST['login'],$_POST['password'],'','','','','','',0);
+        $usuario = new Usuarios_Model('','',$_POST['login'],$_POST['password']);
         
         $respuesta = $usuario->login();
         

@@ -51,7 +51,11 @@ array(
 	'Borrar' => 'Delete',
 	'¿Seguro que quiere borrar los datos?' => 'Are you sure you want to delete the data?',
 	'Buscar' => 'Search',
-	'Resultados' => 'Results'
+	'Resultados' => 'Results',
+	'Sexo' => 'Sex',
+	'Hombre' => 'Man',
+	'Mujer' => 'Woman',
+	'Foto' => 'Photo'
 
 
 

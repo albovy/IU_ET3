@@ -11,7 +11,7 @@
             include '../View/Header.php';
 ?> 
             <div class="formAñadir">
-			<form method='POST' action='../Controller/Loteria_Controller.php?action=add'>
+			<form method='POST' action='../Controller/Loteria_Controller.php?action=add' enctype="multipart/form-data">
 			
 			<div class="login">
 				<label><span class="req">*</span><?= $strings['Email'] ?>:</label>
@@ -34,8 +34,7 @@
 			</div>
 			<div class="login">
 				<label><span class="req">*</span><?= $strings['Resguardo'] ?>:</label>
-				<input type="text" id="resguardoAdd" name="resguardo"  value="" maxlength="50" size=50
-				 onblur="comprobarAlfabetico(this.id,this.size)">
+				<input type="file" id="resguardo" name="resguardo" >
 			</div>
 			<div class="login">
 				<label><span class="req">*</span><?= $strings['Ingresado'] ?>:</label>

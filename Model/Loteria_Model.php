@@ -124,12 +124,15 @@
         }
 
         function insert(){
-            $sql = "INSERT INTO LOTERIAIU VALUES('$this->email','$this->nombre','$this->apellidos',$this->participacion,'$this->resguardo'
+
+            $resguardo = $this->resguardoDir();
+
+            $sql = "INSERT INTO LOTERIAIU VALUES('$this->email','$this->nombre','$this->apellidos',$this->participacion,'$resguardo'
                                                 ,'$this->ingresado',$this->premiPersonal,'$this->pagado')";
             if(!$this->mysqli->query($sql)){
                 return "Error insertando";
             }else{
-                $this->openfile();
+            
                 return "Insertado";
             }
         }
@@ -152,6 +155,7 @@
             
         }
         function delete(){
+            $dirResguardo = '../Files/'. $this->email .'/Resguardo/';
 
             $sql="DELETE FROM LOTERIAIU
                  WHERE `lot.email` = '$this->email'";
@@ -160,7 +164,7 @@
             if(!$this->mysqli->query($sql)){
                 return "Error borrando";
             }else{
-                $this->deleteFile();
+                $this->removeDirectory($dirResguardo);
                 return "Borrado";
             }
 
@@ -193,12 +197,26 @@
 
         }
 
-        function openFile(){
-            fopen("../Files/$this->resguardo","w+");
+        function resguardoDir(){
+            $resguardo = '../Files/'. $this->email . '/Resguardo/' . $this->resguardo['name'];
+            $dirResguardo = '../Files/'. $this->email .'/Resguardo/';
+
+            if(!file_exists($dirResguardo)){
+                mkdir($dirResguardo,0777,true);
+            }
+            move_uploaded_file($this->resguardo['tmp_name'], $resguardo);
+
+            return $resguardo;
+            
         }
-        function deleteFile(){
-            unlink("../Files/$this->resguardo");
-        }
+        function removeDirectory($path) {
+            $files = glob($path . '/*');
+           foreach ($files as $file) {
+               is_dir($file) ? removeDirectory($file) : unlink($file);
+           }
+           rmdir($path);
+            return;
+       }
 
 
 

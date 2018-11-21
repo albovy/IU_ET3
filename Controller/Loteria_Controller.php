@@ -31,10 +31,11 @@ switch ($action) {
     if(!$_POST){
         new Search();
     }else{
-        $loteria = new Loteria_Model($_POST['email'], $_POST['nombre'],$_POST['apellidos'], $_POST['resguardo'] ,$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
+        $loteria = new Loteria_Model($_POST['email'], $_POST['nombre'],$_POST['apellidos'], $_FILES['resguardo'] ,$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
+        
+
         $resultado = $loteria->search();
         if($_GET['results']){
-            var_dump("hola");
             new Search($resultado);
         }
 
@@ -121,11 +122,15 @@ switch ($action) {
     if(!$_POST){
         new AddLot();
     }else{
-        $loteria = new Loteria_Model($_POST['email'], $_POST['nombre'],$_POST['apellidos'], $_POST['resguardo'],$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
+        
+        $loteria = new Loteria_Model($_POST['email'], $_POST['nombre'],$_POST['apellidos'], $_FILES['resguardo'],$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
+        
         $respuesta = $loteria->checkIsValidForInsert();
+        
 
         if($respuesta == 'true'){
            $respuesta = $loteria->insert();
+           var_dump($respuesta);
             if($respuesta == 'Insertado'){
                 new Message($respuesta,'../index.php');
             }else{
