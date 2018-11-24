@@ -170,7 +170,7 @@ function comprobarEmail(campo, size) { //Comprobamos que sea un email
 }
 function registrar(){ //Confirmamos nuevamente si todo esta OK
 
-	if(comprobarDni("dniAdd",9) && comprobarTelf("telefonoAdd") && comprobarTexto("usuarioAdd",25) && comprobarTexto("contraseñaAdd",20) && comprobarVacio("dateAdd") && comprobarEmail("emailAdd",50) &&  comprobarAlfabetico("nombreAdd",25) && comprobarAlfabetico("apellidosAdd",50) && comprobarAlfabetico("titulacionAdd",60)){
+	if(comprobarDni("dniAdd",9) && comprobarTelf("telefonoAdd") && comprobarTexto("usuarioAdd",25) && comprobarTexto("contraseñaAdd",20) && comprobarVacio("dateAdd") && comprobarEmail("emailAdd",50) &&  comprobarAlfabetico("nombreAdd",25) && comprobarAlfabetico("apellidosAdd",50) && validateFileNotEmpty("fotoAdd")){
 		return true;
 	}
 	alert('Error insertando');
@@ -186,11 +186,20 @@ function editar(){ //Confirmamos nuevamente si todo esta OK
 }
 
 function addLot(){
-	if(comprobarEmail("emailAdd",50) && comprobarAlfabetico("nombreAdd",25) && comprobarAlfabetico("apellidosAdd",50) && comprobarEntero("participacionAdd",0,999) && comprobarEntero("premioAdd",0,999999)){
+	if(comprobarEmail("emailAdd",50) && comprobarAlfabetico("nombreAdd",25) && comprobarAlfabetico("apellidosAdd",50) && comprobarEntero("participacionAdd",0,999) && comprobarEntero("premioAdd",0,999999) && validateFileNotEmpty("resguardo")){
 		return true;
 	}
 	alert('Error insertando');
 	return false;
 }
 
+function validateFileNotEmpty(campo){
+	if(document.getElementById(campo).files.length == 0){
+		document.getElementById(campo).style.borderColor="red";
+		return false;
+	}else{
+		document.getElementById(campo).style.borderColor="red";
+		return true;
+	}
+}
 

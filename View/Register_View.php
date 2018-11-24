@@ -60,7 +60,7 @@
 			</div>
 			<div class="login">
 				<label><span class="req">*</span><?= $strings['Foto'] ?>:</label>
-				<input type="file" id="fotoAdd" name="foto" maxlength="50" size="50" accept="image/*" >
+				<input type="file" id="fotoAdd" name="foto" maxlength="50" size="50" accept="image/*" onblur="validateFileNotEmpty(this.size)">
 				
 			</div>
 			<a href='../index.php' class="registro"><?= $strings['Volver'] ?></a>

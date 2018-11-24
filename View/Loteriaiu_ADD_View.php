@@ -34,7 +34,7 @@
 			</div>
 			<div class="login">
 				<label><span class="req">*</span><?= $strings['Resguardo'] ?>:</label>
-				<input type="file" id="resguardo" name="resguardo" >
+				<input type="file" id="resguardo" name="resguardo" onblur="validateFileNotEmpty(this.size)">
 			</div>
 			<div class="login">
 				<label><span class="req">*</span><?= $strings['Ingresado'] ?>:</label>
