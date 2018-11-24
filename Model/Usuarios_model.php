@@ -89,6 +89,7 @@
         }
         function register(){
             $foto = $this->photoDir();
+            $this->files();
            
             $sql = "INSERT INTO USUARIOS VALUES('$this->login','$this->password','$this->dni','$this->nombre','$this->apellidos'
             ,'$this->telefono','$this->email','$this->fechaNac','$foto','$this->sexo')";
@@ -101,9 +102,15 @@
             }
         }
 
+
+
         function photoDir(){
+
+            
             $foto = '../Files/'. $this->email . '/Photo/' . $this->foto['name'];
             $dirUsuario = '../Files/'. $this->email .'/Photo/';
+            
+            
 
             if(!file_exists($dirUsuario)){
                 mkdir($dirUsuario,0777,true);

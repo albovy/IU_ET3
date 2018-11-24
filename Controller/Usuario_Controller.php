@@ -4,7 +4,7 @@ include "../Functions/Authentication.php";
 include '../View/Login_View.php';
 include '../View/Register_View.php';
 include '../Model/Usuarios_Model.php';
-include '../View/Message_View.php';
+include '../View/MESSAGE_View.php';
 
 
 

@@ -8,7 +8,7 @@ include '../View/Loteriaiu_DELETE_View.php';
 include '../View/Loteriaiu_EDIT_View.php';
 include '../View/Loteriaiu_SEARCH_View.php';
 include '../Model/Loteria_Model.php';
-include '../View/Message_View.php';
+include '../View/MESSAGE_View.php';
 
 
 
@@ -130,7 +130,6 @@ switch ($action) {
 
         if($respuesta == 'true'){
            $respuesta = $loteria->insert();
-           var_dump($respuesta);
             if($respuesta == 'Insertado'){
                 new Message($respuesta,'../index.php');
             }else{
