@@ -89,7 +89,7 @@
         }
         function register(){
             $foto = $this->photoDir();
-            $this->files();
+            
            
             $sql = "INSERT INTO USUARIOS VALUES('$this->login','$this->password','$this->dni','$this->nombre','$this->apellidos'
             ,'$this->telefono','$this->email','$this->fechaNac','$foto','$this->sexo')";

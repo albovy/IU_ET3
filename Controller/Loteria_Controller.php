@@ -31,7 +31,7 @@ switch ($action) {
     if(!$_POST){
         new Search();
     }else{
-        $loteria = new Loteria_Model($_POST['email'], $_POST['nombre'],$_POST['apellidos'], $_FILES['resguardo'] ,$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
+        $loteria = new Loteria_Model($_POST['email'], $_POST['nombre'],$_POST['apellidos'], $_POST['resguardo'] ,$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
         
 
         $resultado = $loteria->search();
