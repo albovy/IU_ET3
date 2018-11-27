@@ -56,7 +56,8 @@ array(
     'Sexo' => 'Sexo',
 	'Hombre' => 'Home',
     'Mujer' => 'Muller',
-    'Foto' => 'Foto'
+    'Foto' => 'Foto',
+    'Email incorrecto' => 'Email incorrecto'
 
 
  )

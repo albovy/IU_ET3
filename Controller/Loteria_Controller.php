@@ -52,7 +52,10 @@ switch ($action) {
         $loteria = new Loteria_Model($_GET['email']);
         $loteria = $loteria->findByEmail();
         
-        
+        if($loteria == 'Email incorrecto'){
+            new Message($loteria , '../index.php');
+        }else{
+
         if(isset($_GET['delete'])){
 
             $respuesta = $loteria->delete();
@@ -64,6 +67,7 @@ switch ($action) {
 
         
         }
+    }
     }
 
     break;
@@ -77,8 +81,11 @@ switch ($action) {
         }else{
             $loteria = new Loteria_Model($_GET['email']);
             $loteria = $loteria->findByEmail();
-
+            if($loteria == 'Email incorrecto'){
+                new Message($loteria , '../index.php');
+            }else{
             new ShowCurrent($loteria);
+            }
 
 
 
@@ -92,26 +99,30 @@ switch ($action) {
             new Message($respuesta,'../index.php');
         }else{
             $loteria = new Loteria_Model($_GET['email']);
+
             $loteria = $loteria->findByEmail();
-            $resguardo = $loteria->getResguardo();
-
-            if(!$_POST){
-                $loteria = new Loteria_Model($_GET['email']);
-                $loteria = $loteria->findByEmail();
-                new EditLot($loteria);
+            if($loteria == 'Email incorrecto'){
+                new Message($loteria , '../index.php');
             }else{
-                $loteria = new Loteria_Model($_GET['email'], $_POST['nombre'],$_POST['apellidos'], $resguardo ,$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
-                
-                $respuesta = $loteria->update();
 
-                if($respuesta == 'Editado'){
-                    new Message($respuesta,'../index.php');
+            
+                $resguardo = $loteria->getResguardo();
 
+                if(!$_POST){
+                    $loteria = new Loteria_Model($_GET['email']);
+                    $loteria = $loteria->findByEmail();
+                    new EditLot($loteria);
                 }else{
+                    $loteria = new Loteria_Model($_GET['email'], $_POST['nombre'],$_POST['apellidos'], $resguardo ,$_POST['participación'], $_POST['ingresado'],$_POST['premio'],$_POST['pagado']);
+                
+                     $respuesta = $loteria->update();
+
+    
                     new Message($respuesta,'../index.php');
-                }
+                
 
 
+                 }
             }
         }
 
@@ -130,14 +141,9 @@ switch ($action) {
 
         if($respuesta == 'true'){
            $respuesta = $loteria->insert();
-            if($respuesta == 'Insertado'){
-                new Message($respuesta,'../index.php');
-            }else{
-                new Message($respuesta,'../index.php');
-            }
-        }else{
-            new Message($respuesta, '../index.php');
         }
+        new Message($respuesta, '../index.php');
+        
         
     }
 
